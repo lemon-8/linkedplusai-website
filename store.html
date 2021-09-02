@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" sizes="any" type="image/png">
+    <title>Store Redirect</title>
+</head>
+<body>
+    <script>
+        function getMobileOperatingSystem() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Windows Phone must come first because its UA also contains "Android"
+            if (/windows phone/i.test(userAgent)) {
+                window.location.href = "https://play.google.com/store/apps/details?id=com.linkplusai.linkplusai";
+                return "Windows Phone";
+            }
+
+            if (/android/i.test(userAgent)) {
+                window.location.href = "https://play.google.com/store/apps/details?id=com.linkplusai.linkplusai";
+                return "Android";
+            }
+
+            // iOS detection from: http://stackoverflow.com/a/9039885/177710
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                window.location.href = "https://apps.apple.com/us/app/link-ai/id1581076809";
+                return "iOS";
+            }
+
+            return "unknown";
+        }
+
+        getMobileOperatingSystem();
+    </script>
+</body>
+</html>
